@@ -1,0 +1,2 @@
+git+https://github.com/edx/xblock-utils.git@v1.1.1#egg=xblock-utils==1.1.1
+git+https://github.com/open-craft/django-statici18n@1.7.1-namespace#egg=django-statici18n==1.7.1
