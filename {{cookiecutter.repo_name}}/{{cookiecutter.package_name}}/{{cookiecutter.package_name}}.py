@@ -85,10 +85,11 @@ class {{cookiecutter.class_name}}(XBlock):
         Defaults to English if available.
         """
         lang_code = translation.get_language()
-        if lang_code:
-            text_js = 'public/js/translations/{lang_code}/text.js'
-            country_code = lang_code.split('-')[0]
-            for code in (lang_code, country_code, 'en'):
-                loader = ResourceLoader(__name__)
-                if pkg_resources.resource_exists(loader.module_name, text_js.format(lang_code=code)):
-                    return text_js.format(lang_code=code)
+        if not lang_code:
+            return
+        text_js = 'public/js/translations/{lang_code}/text.js'
+        country_code = lang_code.split('-')[0]
+        for code in (lang_code, country_code, 'en'):
+            loader = ResourceLoader(__name__)
+            if pkg_resources.resource_exists(loader.module_name, text_js.format(lang_code=code)):
+                return text_js.format(lang_code=code)
